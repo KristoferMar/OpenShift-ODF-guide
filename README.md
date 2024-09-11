@@ -48,3 +48,41 @@ oc apply -f lso-subscription.yml
 watch oc get -n openshift-local-storage operatorgroups,subscriptions,clusterserviceversions
 ```
 
+We then apply the localvolumediscovery.yaml and get the output 
+```
+oc apply -f localvolumediscovery.yml
+
+oc get localvolumediscoveryresults
+```
+
+We then verify that /dev/vdb and /dev/vdc disks were discovered on all worker notes and it should look like this 
+```
+oc get localvolumediscoveryresults -o custom-columns='NAME:metadata.name,PATH:status.discoveredDevices[*].path'
+NAME                        PATH
+discovery-result-worker01   /dev/vda1,/dev/vda2,...,/dev/vdb,/dev/vdc
+discovery-result-worker02   /dev/vda1,/dev/vda2,...,/dev/vdb,/dev/vdc
+discovery-result-worker03   /dev/vda1,/dev/vda2,...,/dev/vdb,/dev/vdc
+```
+
+We then create the local volume set by applying the localvolumeset.yml file and keep track 
+```
+oc apply -f localvolumeset.yml
+
+oc get localvolumesets/lso-volumeset
+NAME            STORAGECLASS    PROVISIONED   AGE
+lso-volumeset   lso-volumeset   3             2m
+```
+
+# Openshift-storage
+We create a new project called "openshift-storage" and shift to it
+
+```
+oc adm new-project openshift-storage
+Created project openshift-storage
+
+oc project openshift-storage
+Now using project "openshift-storage" on server "https://api.ocp4.example.com:6443".
+```
+
+
+
