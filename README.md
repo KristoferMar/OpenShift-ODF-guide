@@ -47,3 +47,4 @@ oc apply -f lso-subscription.yml
 
 watch oc get -n openshift-local-storage operatorgroups,subscriptions,clusterserviceversions
 ```
+
