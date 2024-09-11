@@ -28,6 +28,13 @@ oc debug node/worker01 -- lsblk --paths --nodeps
 ```
 Based on what we see here we want to go for space on /vdb and /vdc given they are not in use and have space available 
 
+Now we create the "openshift-local-storage" namespace (more info in README_LocalStorage.yaml) and change into it.
+```
+oc adm new-project openshift-local-storage
+
+oc project openshift-local-storage
+```
+
 Now we create an "OperatorGroup" which defines the scope of the operators that will be deployed in our namespace. Modify and use the "lso-operatorgroup.yaml" for this.
 - This is done to limit the scope of the operator to our namespace for security or resource management reasons.
 ```
