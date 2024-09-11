@@ -84,5 +84,21 @@ oc project openshift-storage
 Now using project "openshift-storage" on server "https://api.ocp4.example.com:6443".
 ```
 
+We apply the operatorgroup to the namespace
+```
+oc apply -f /openshift-storage/ocs-operatorgroup.yml
+```
 
+We create the osc-operator subscription and watch the installation (can take a few minutes)
+```
+oc apply -f /openshift-storage/ocs-subscription.yml
 
+watch oc get -n openshift-storage operatorgroups,subscriptions,clusterserviceversions
+```
+
+We create the osc-storagecluster and watch the installation
+```
+oc apply -f /openshift-storage/storagecluster.yml
+
+watch oc get -n openshift-storage storagecluster,pods
+```
