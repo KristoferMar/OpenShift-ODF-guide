@@ -7,3 +7,6 @@ ocs-storagecluster-cephfs	: This class provides shared and distributed file syst
 openshift-storage.noobaa.io	: This class provides multicloud object storage through the MCG.
 
 ocs-storagecluster-ceph-rgw	: This class provides on-premises object storage.
+
+## Notes
+- A bucket needs to be configured for the image registry. 
