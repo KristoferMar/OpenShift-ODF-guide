@@ -1,0 +1,8 @@
+---
+  volumeMounts:
+  - name: image-tool-storage
+    mountPath: "/var/storage"
+volumes:
+- name: image-tool-storage
+  persistentVolumeClaim:
+    claimName: image-tool

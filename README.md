@@ -6,6 +6,11 @@
 &
 ``` OpenShift Data Foundation ```
 
+# Storage types 
+**Block storage** is like giving each app its own virtual hard drive (fast and direct).
+**File storage** is like a shared folder multiple apps can access.
+**Object storage** is like a storage system for large files or backups (ideal for media, logs, etc.).
+
 ### Installation using CLI
 #### Label all worker nodes
 ```
