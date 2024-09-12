@@ -73,6 +73,8 @@ NAME            STORAGECLASS    PROVISIONED   AGE
 lso-volumeset   lso-volumeset   3             2m
 ```
 
+_Remember to verify that worker notes hostnames match the configured hostnames in the localvolumeset.yaml_
+
 # Openshift-storage
 We create a new project called "openshift-storage" and shift to it
 
