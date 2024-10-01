@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cephrbd-block-pvc
+  namespace: <your-namespace>
+spec:
+  storageClassName: ocs-storagecluster-cephrbd
+  accessModes:
+    - ReadWriteOnce  # For block storage, ReadWriteOnce is typically used
+  resources:
+    requests:
+      storage: 10Gi  # Define the desired block storage size
